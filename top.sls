@@ -5,10 +5,6 @@ base:
     - match: grain
     - linux.states.hostname
     - linux.states.ssh_linux
-    - linux.states.zabbix_agent_linux
-    - linux.states.clamav-evo_linux
-    - linux.states.webmin_linux
-    - linux.states.Scripts-Auto-Test
 
 	
 # parti ciblage avec les grains 
