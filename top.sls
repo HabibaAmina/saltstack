@@ -10,6 +10,22 @@ base:
     - linux.states.webmin_linux
     - linux.states.Scripts-Auto-Test
 
+	
+# parti ciblage avec les grains 
+webserver-lamp:
+  'roles:webserver-lamp':
+    - match: grain
+    - linux.states.apache2_linux
+    - linux.states.php5_linux
+    - linux.states.mysql-server_linux
+    - linux.states.openssl_linux
+	
+# ce state permet de copier les fichiers de configuration pour apache et IIS dans diff environnement Windows et Linux 
+webserver-tuning:
+  'roles:webserver-tuning':
+    - match: grain
+    - linux.states.webserver_tuning_linux	
+	
 # parti Apps de base Windows
 
   'os:Windows':
@@ -21,23 +37,6 @@ base:
     - windows.states.iSheriff_windows
 
 
-# parti ciblage avec les grains 
-# ce state permet de copier les fichiers de configuration pour apache et IIS dans diff environnement Windows et Linux 
-
-webserver-tuning:
-  'roles:webserver-tuning':
-    - match: grain
-    - linux.states.webserver_tuning_linux
-
-webserver-lamp:
-  'roles:webserver-lamp':
-    - match: grain
-    - linux.states.apache2_linux
-    - linux.states.php5_linux
-    - linux.states.mysql-server_linux
-    - linux.states.phpmyadmin_linux
-    - linux.states.proftpd_linux
-    - linux.states.openssl_linux
 
 
 # ajouter states php 
